@@ -538,6 +538,7 @@ ul, ol {
         margin-bottom: 16px;
 }
 .modal-close {
+    background-color: #e7e9fc;
     position: absolute;
     padding: 0;
     cursor: pointer;
@@ -655,7 +656,7 @@ fill: #FFFFFF;
         border 250ms cubic-bezier(0.4, 0, 0.2, 1),
         fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.checkbox {
+.visually-hidden {
     position: absolute;
     width: 1px;
     height: 1px;
