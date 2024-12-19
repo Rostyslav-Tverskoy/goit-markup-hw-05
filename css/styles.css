@@ -668,7 +668,7 @@ fill: #FFFFFF;
     overflow: hidden;
 }
 
-.checkbox:checked + .form-user-checkbox .custom-checkbox {
+.visually-hidden:checked + .form-user-checkbox .custom-checkbox {
     background-color: #404bbf;
     fill: #f4f4fd;
     border: none;
