@@ -505,7 +505,7 @@ ul, ol {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visivility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .backdrop.is-open{
     opacity: 1;
@@ -514,7 +514,7 @@ ul, ol {
 }
 .modal {
     width: 408px;
-    height: 584px;
+    min-height: 584px;
     border-radius: 4px;
     background-color: #fcfcfc;
     position: absolute;
@@ -523,6 +523,10 @@ ul, ol {
     transform: translate(-50%,-50%);
     padding: 24px;
     padding-top: 72px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-text {
     font-weight: 500;
@@ -535,27 +539,31 @@ ul, ol {
 }
 .modal-close {
     position: absolute;
+    padding: 0;
+    cursor: pointer;
     top: 24px;
     right: 24px;
-    border-radius: 100%;
+    border-radius: 50%;
     fill: #e7e9fc;
     stroke-width: 1px;
     stroke: rgba(0, 0, 0, 0.1);
-    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     width: 24px;
     height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
 }
 .icon-close {
     fill: #2e2f42;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-close:hover,
 .modal-close:focus {
     background-color: #404bbf;
+    border: none;
     
 }
 .modal-close:hover .icon-close,
@@ -571,20 +579,21 @@ fill: #FFFFFF;
     margin-bottom: 4px;
     font-weight: 400;
     font-size: 12px;
-    line-height: 1.16667;
+    line-height: 1.17;
     letter-spacing: 0.04em;
     color: #8e8f99;
    
 }
 
 .form-user-input {
+    background-color: transparent;
     width: 100%;
     height: 40px;
     border: 1px solid rgba(46, 47, 66, 0.4);
     border-radius: 4px;
     padding-left: 38px;
-    outline: none;
-    transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    outline: transparent;
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .form-user-input:focus {
     border: 1px solid #4d5ae5
@@ -604,16 +613,22 @@ fill: #FFFFFF;
 
 .form-user-icon-wrapper {
     position: relative;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
 }
 .form-user-coment {
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.04em;
+    color: rgba(46, 47, 66, 0.4);
+    background-color: transparent;
     width: 100%;
     resize: none;
     min-height: 120px;
     border-radius: 4px;
     border: 1px solid rgba(46, 47, 66, 0.4);
-    outline: none;
+    outline: transparent;
     padding: 8px 16px;
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .form-user-coment::placeholder {
     font-weight: 400;
@@ -636,19 +651,33 @@ fill: #FFFFFF;
     border: 1px solid rgba(46, 47, 66, 0.4);
     fill: transparent;
     margin-right: 8px;
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.checkbox {}
+.checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
 
 .checkbox:checked + .form-user-checkbox .custom-checkbox {
     background-color: #404bbf;
     fill: #f4f4fd;
+    border: none;
 }
 
 .form-user-checkbox {
     font-weight: 400;
         font-size: 12px;
-        line-height: 1.16667;
+        line-height: 1.17;
         letter-spacing: 0.04em;
         color: #8e8f99;
 }
@@ -658,13 +687,14 @@ fill: #FFFFFF;
 
 .form-user-checkbox a {
     text-decoration: underline;
+    color: #4d5ae5;
 }
 
 .form-wrapper-checkbox {
     margin-bottom: 24px;
 }
 .form-btn-submit {
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     margin-left: auto;
